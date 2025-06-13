@@ -9,7 +9,10 @@ import me.gonzager.commands.Tarea;
 
 public class Robot {
     private Double bateria = 100.0;
-    private List<Tarea> registroDeTareas = new ArrayList<>();
+
+    public Robot(Double bateria) {
+        this.bateria = bateria;
+    }
 
     public Double nivelDeBateria(){
         return bateria;
@@ -22,11 +25,12 @@ public class Robot {
     public Double getTiempoDeCargaCompleta(){
         return (100 - bateria)*(60/0.8);
     }
+    
     public void encenderLuz(Habitacion habitacion){
         habitacion.setLuz(true);
     }
 
-    public void consumoBateria(Integer bateriaConsumida){
+    public void consumoBateria(Double bateriaConsumida){
         if(bateriaConsumida > this.bateria){
             throw new RuntimeException("La bateria no es lo suficiente para el consumo que se requiere");
         }else{
@@ -42,14 +46,23 @@ public class Robot {
         habitacion.limpia();
     }
 
-    public Double promedioTiempoTareas(){
-
+    public Double promedioTiempoTareas(List<Tarea> registroDeTareas){
         if(registroDeTareas.size()>0){
            return registroDeTareas.stream().mapToDouble(t -> t.getDuracion()).average().orElse(0);
         }else{
             return 0.0;
         }
-        
     }
 
+    public void run(List<Tarea> listaDeTareas){
+        listaDeTareas.stream().forEach(t -> t.execute(this));
+    }
+
+    public void informar(){
+        System.out.println("El tiempo promedio de tareas es: " + this.promedioTiempoTareas());
+    }
+
+    public void reset(){
+        bateria = 100.0;
+    }
 }

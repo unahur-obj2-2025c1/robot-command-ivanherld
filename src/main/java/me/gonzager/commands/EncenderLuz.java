@@ -15,11 +15,11 @@ public class EncenderLuz extends Tarea {
     public void doExecute(Robot robot) {
         
         if (habitacion.getLuz()){
-            robot.consumoBateria(1);
+            robot.consumoBateria(1.0);
             this.setDuracion(25.0);
         }else{
             robot.encenderLuz(habitacion);
-            robot.consumoBateria(5);
+            robot.consumoBateria(5.0);
             this.setDuracion(90.0);
         } 
     }

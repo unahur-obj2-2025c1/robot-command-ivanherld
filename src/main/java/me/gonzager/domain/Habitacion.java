@@ -2,7 +2,7 @@ package me.gonzager.domain;
 
 public class Habitacion {
   
-    private Integer metrosCuadrados;
+    private Double metrosCuadrados;
     private Boolean pisoLimpio = false;
     private Boolean luz = false;
 
@@ -14,6 +14,10 @@ public class Habitacion {
         return luz;
     }
 
+    public Habitacion(Double metrosCuadrados) {
+        this.metrosCuadrados = metrosCuadrados;
+    }
+
     public void limpia(){
         this.pisoLimpio = true;
     }
@@ -22,7 +26,7 @@ public class Habitacion {
         return pisoLimpio;
     }
 
-    public Integer getMetrosCuadrados(){
+    public Double getMetrosCuadrados(){
         return metrosCuadrados;
     }
 
