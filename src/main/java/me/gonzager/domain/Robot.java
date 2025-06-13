@@ -1,6 +1,5 @@
 package me.gonzager.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -58,8 +57,8 @@ public class Robot {
         listaDeTareas.stream().forEach(t -> t.execute(this));
     }
 
-    public void informar(){
-        System.out.println("El tiempo promedio de tareas es: " + this.promedioTiempoTareas());
+    public void informar(List<Tarea> listaDeTareas){
+        System.out.println("El tiempo promedio de tareas es: " + this.promedioTiempoTareas(listaDeTareas));
     }
 
     public void reset(){

@@ -34,6 +34,8 @@ class RobotTest {
                         .build()
             );
 
+            robotin.informar(listaDeTarea);
+            
             assertEquals(15.0, robotin.nivelDeBateria());
 
             
